@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <!--Listener-->
+    <listener>
+        <listener-class>com.nnv.core.listener.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>application-root.properties</param-value>
+    </context-param>
+
+
+    <!--Servlet-->
+    <servlet>
+        <servlet-name>myDispatcherServlet</servlet-name>
+        <servlet-class>com.nnv.core.servlet.MyDispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>application-web.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myDispatcherServlet</servlet-name>
+        <url-pattern>/app1/*</url-pattern>
+    </servlet-mapping>
+
+    <!--Filter-->
+    <filter>
+        <filter-name>logFilter</filter-name>
+        <filter-class>com.nnv.core.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>filter</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>logFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

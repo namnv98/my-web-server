@@ -1,0 +1,16 @@
+
+
+keytool -genkeypair -alias local_ssl -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore /ssl/local-ssl.p12 –validity 365 -ext san=dns:localhost
+
+keytool -export -keystore /ssl/local-ssl.p12 -alias local_ssl -file /ssl/local-cert.crt
+
+curl.exe --cacert /ssl/local-cert.crt https://localhost:8092/testDemo1/app1/home/index
+
+-------------------------------------------
+certmgr.msc
+
+https://www.codejava.net/frameworks/spring-boot/configure-https-with-self-signed-certificate
+
+self signed cert
+
+

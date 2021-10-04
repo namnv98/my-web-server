@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="http://localhost:8092/testDemo1/app1/favicon.ico"/>
+    <title>http server</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<h1>My http server</h1>
+<video id="video" width="900px" height="500px" controls>
+    <source src="http://localhost:8092/testDemo1/app1/media/view?fileName=HDXK1533.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<p>Hello <span style="color: brown" th:text="${recipient}">Peter</span>!!!</p>
+
+<table id="customers" style="margin-bottom: 50px">
+    <tr>
+        <th>Play</th>
+        <th>Thumb</th>
+        <th>Tên File</th>
+        <th>Ngày tạo</th>
+        <th>Loại</th>
+        <th>Đường đẫn</th>
+        <th>Kích thước</th>
+        <th>Tải</th>
+    </tr>
+
+    <tr th:each="file : ${fileList}">
+        <td>
+<!--            <img width="50px" th:src="'http://localhost:8092/testDemo1/app1/media/view?fileName='+${file.videoThumbUrl}">-->
+
+        </td>
+        <td th:data-longDescription="${file.name}" onclick="changeSource(this.getAttribute('data-longDescription'))">
+            <button>Play</button>
+        </td>
+        <td th:text="${file.name}">A Smoke Test'</td>
+        <td th:text="${file.type}">A Smoke Test'</td>
+        <td th:text="${file.createTime}">A Smoke Test'</td>
+        <td th:text="${file.url}">A Smoke Test'</td>
+        <td th:text="${file.getSize()}">A Smoke Test'</td>
+        <td><a th:href="'http://localhost:8092/testDemo1/app1/home/download?fileName='+${file.name}">Tải video</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+<style>
+    video {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        /*width: 50%;*/
+    }
+
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    button {
+        cursor: pointer;
+    }
+</style>
+
+
+<script>
+    function changeSource(fileName) {
+        var video = document.getElementById('video');
+        video.src = 'http://localhost:8092/testDemo1/app1/media/view?fileName=' + fileName;
+        video.play();
+    }
+</script>
