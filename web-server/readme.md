@@ -72,9 +72,9 @@ Việc hủy dịch vụ, khi một cá thể Servlet bị xóa khỏi dịch v�
 
 
 
-đối với các request get/post có sự giới hạn về kích thước dữ liệu được gửi,
-giao thức http không giới hạn kích thước mà sợ giới hạn này nằm ở web server
-mỗi web server có triển khai kích thước request của riêng mình
+đối với các request get/post có sự giới hạn về kích thước dữ liệu được gửi, 
+giao thức http không giới hạn kích thước mà sợ giới hạn này nằm ở web server 
+mỗi web server có triển khai kích thước request của riêng mình 
 Tomcat: kích thước tối đa của header request là 8kb, của body mặc định là là 2m (các kích thước này có thể thay đổi được thông qua cấu hình)
 việc giới hạn kích thước tối đa của request nhằm mục đích tránh các cuộc tấn công DDOS
 nếu chấp nhận không giới hạn kich thước của request thì tin tặc có thể gửi rất rất nhiều request có kích thước rất lớn lên đến vài GB kiến hệ thống phải tiêu tốn tài nguyên để xử lý
