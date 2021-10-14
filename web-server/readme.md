@@ -67,3 +67,15 @@ Nạp và khởi tạo, thùng chứa chịu trách nhiệm tải và khởi t�
 Khởi tạo, vùng chứa gọi phương thức init để khởi tạo đối tượng Servlet và phương thức init chỉ được gọi một lần.
 Để xử lý yêu cầu, vùng chứa gọi phương thức dịch vụ để xử lý yêu cầu và dịch vụ gọi phương thức doXxx tương ứng để xử lý yêu cầu.
 Việc hủy dịch vụ, khi một cá thể Servlet bị xóa khỏi dịch vụ, sẽ gọi phương thức hủy, phương thức này chỉ được thực thi một lần.
+
+
+
+
+
+đối với các request get/post có sự giới hạn về kích thước dữ liệu được gửi,
+giao thức http không giới hạn kích thước mà sợ giới hạn này nằm ở web server
+mỗi web server có triển khai kích thước request của riêng mình
+Tomcat: kích thước tối đa của header request là 8kb, của body mặc định là là 2m (các kích thước này có thể thay đổi được thông qua cấu hình)
+việc giới hạn kích thước tối đa của request nhằm mục đích tránh các cuộc tấn công DDOS
+nếu chấp nhận không giới hạn kich thước của request thì tin tặc có thể gửi rất rất nhiều request có kích thước rất lớn lên đến vài GB kiến hệ thống phải tiêu tốn tài nguyên để xử lý
+mặc định tomcat chỉ có thể xử lý 150 request cùng lúc (150 thread), nếu tin tặc gửi hàng nghìn request có kích thước hàng gb thì khiến người dùng khác không thể truy cập được trang web vì toàn bộ tài nguyên đang bị xử dụng bời các requet DDOS kia
