@@ -79,3 +79,8 @@ Tomcat: kích thước tối đa của header request là 8kb, của body mặc 
 việc giới hạn kích thước tối đa của request nhằm mục đích tránh các cuộc tấn công DDOS
 nếu chấp nhận không giới hạn kich thước của request thì tin tặc có thể gửi rất rất nhiều request có kích thước rất lớn lên đến vài GB kiến hệ thống phải tiêu tốn tài nguyên để xử lý
 mặc định tomcat chỉ có thể xử lý 150 request cùng lúc (150 thread), nếu tin tặc gửi hàng nghìn request có kích thước hàng gb thì khiến người dùng khác không thể truy cập được trang web vì toàn bộ tài nguyên đang bị xử dụng bời các requet DDOS kia
+
+Các giới hạn được định cấu hình thích hợp giảm thiểu việc khai thác tràn bộ đệm, ngăn chặn các cuộc tấn công Từ chối Dịch vụ (DoS).
+
+Giới hạn request được bật theo mặc định, các request vượt quá độ dài được chỉ định được giả định là tấn công tràn bộ đệm (buffer overflow). Các giá trị mặc định thường thích hợp, nhưng bạn có thể chọn thay đổi một hoặc nhiều giá trị mặc định trong các điều kiện nhất định.
+
