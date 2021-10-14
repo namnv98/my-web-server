@@ -84,3 +84,5 @@ Các giới hạn được định cấu hình thích hợp giảm thiểu việ
 
 Giới hạn request được bật theo mặc định, các request vượt quá độ dài được chỉ định được giả định là tấn công tràn bộ đệm (buffer overflow). Các giá trị mặc định thường thích hợp, nhưng bạn có thể chọn thay đổi một hoặc nhiều giá trị mặc định trong các điều kiện nhất định.
 
+https://campus.barracuda.com/product/webapplicationfirewall/doc/4259870/configuring-request-limits/
+
